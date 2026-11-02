@@ -12,6 +12,7 @@
   <script src="content.js" defer></script>
   <script src="app.js" defer></script>
   <script src="workspace.js" defer></script>
+  <script src="contact-mascot.js" defer></script>
 </head>
 <body class="portfolio-page">
   <a class="skip-link" href="#content">跳至内容</a>
@@ -44,8 +45,28 @@
         <section id="notes" class="panel" aria-labelledby="writing-title" hidden>
           <div class="panel-heading"><span>04 / WRITING ARCHIVE</span><span>THOUGHTS, KEPT IN WORDS</span></div><div class="collection-heading"><div><p class="eyebrow">WRITING / 文章与报告</p><h1 id="writing-title" tabindex="-1">持续观察，<br>也持续表达。</h1><p>收录公众号原文和完整产品研究报告。点击文章，在原始发布页面继续阅读。</p></div><div class="collection-number"><strong data-count="articles">3</strong><span>ARTICLES</span></div></div><div class="writing-layout"><aside id="publication" class="publication" hidden></aside><div class="articles-column"><div class="article-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索文章</span><input id="article-search" type="search" placeholder="搜索文章、主题或标签" autocomplete="off"></label><label><span class="sr-only">文章分类</span><select id="article-category" aria-label="文章分类"><option value="all">全部分类</option></select></label></div><p id="article-count" class="article-count" aria-live="polite"></p><div id="note-list" class="note-list"></div><p id="article-empty" class="empty-state" hidden>没有找到相关文章，试试其他关键词。</p></div></div>
         </section>
-        <section id="contact" class="panel" aria-labelledby="contact-title" hidden>
-          <div class="panel-heading"><span>05 / GET IN TOUCH</span><span>LET'S CONNECT</span></div><div class="contact-hero"><p class="eyebrow">HAVE AN IDEA? / 交流一下</p><h1 id="contact-title" tabindex="-1">下一个好想法，<br>从一句你好开始。</h1><p>欢迎交流产品研究、交互体验、AI 探索与内容创作。</p><button type="button" id="contact-button" class="button primary">和我联系 <span aria-hidden="true">↗</span></button></div><div class="contact-links"><a href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer"><small>01 / GITHUB</small><strong>@xma28016-gif</strong><span aria-hidden="true">↗</span></a><a href="https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ" target="_blank" rel="noopener noreferrer"><small>02 / WECHAT</small><strong>代码不再冷冰冰</strong><span aria-hidden="true">↗</span></a></div>
+        <section id="contact" class="panel contact-panel" aria-labelledby="contact-title" hidden>
+          <div class="panel-heading"><span>05 / GET IN TOUCH</span><span>LET'S CONNECT</span></div>
+          <div class="contact-hero">
+            <div class="contact-copy">
+              <p class="eyebrow">HAVE AN IDEA? / 交流一下</p>
+              <h1 id="contact-title" tabindex="-1">下一个好想法，<br>从一句你好开始。</h1>
+              <p class="contact-description">欢迎交流产品研究、交互体验、AI 探索与内容创作。</p>
+              <button type="button" id="contact-button" class="button primary">和我联系 <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="contact-mascot" id="contact-mascot">
+              <span class="mascot-halo" aria-hidden="true"></span>
+              <p id="mascot-greeting" class="mascot-greeting" role="status" aria-live="polite" aria-atomic="true"></p>
+              <button id="mascot-button" class="mascot-button" type="button" aria-label="和马骁的卡通形象打个招呼" aria-describedby="mascot-hint">
+                <img src="assets/maxiao-mascot.png" alt="" width="1024" height="1536" loading="lazy" decoding="async" draggable="false">
+              </button>
+              <p id="mascot-hint" class="mascot-hint">点点我，打个招呼 <span aria-hidden="true">↖</span></p>
+            </div>
+          </div>
+          <div class="contact-links">
+            <a href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer"><small>01 / GITHUB</small><strong>@xma28016-gif</strong><span aria-hidden="true">↗</span></a>
+            <a href="https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ" target="_blank" rel="noopener noreferrer"><small>02 / WECHAT</small><strong>代码不再冷冰冰</strong><span aria-hidden="true">↗</span></a>
+          </div>
         </section>
         <noscript><p class="noscript-note">此界面使用 JavaScript 切换分区。你也可以直接访问 <a href="https://github.com/xma28016-gif">我的 GitHub</a> 或 <a href="https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ">公众号文章</a>。</p></noscript>
       </main>

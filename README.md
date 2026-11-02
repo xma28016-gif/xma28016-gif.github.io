@@ -12,6 +12,7 @@
 - 文章支持主题搜索和分类，保留公众号原文与完整研究报告的链接。
 - 独立的终端欢迎页，点击按钮或按回车进入主页。
 - 浅色桌面窗口、个人原照和侧栏分区；支持手机布局、键盘操作及浏览器前进后退。
+- 联系页采用淡蓝玻璃卡片，卡通形象支持点击或键盘打招呼，显示 3 秒的 hi 气泡，并遵循减少动态效果偏好。
 
 当前项目资料来自公开仓库及其报告。技能描述对应具体项目实践，不使用熟练度分数。私有仓库未收录。
 
@@ -37,14 +38,14 @@ python3 -m http.server 5173
 
 新增公开项目时，同时维护相关技能中的项目 ID。新增公众号文章时，将标题与原文链接加入 `notes`，可同时补充已确认的日期和摘要。
 
-欢迎页在 `index.html`，主页结构在 `home.html`，样式在 `styles.css`，目录筛选与弹窗在 `app.js`，分区路由在 `workspace.js`，欢迎页键盘入口在 `welcome.js`。个人照片为 `assets/maxiao-portrait.jpg`，来源于站点主人提供的原照。`particles.js` 保留早期 Canvas 实验，当前页面不加载。Inter 字体本地托管，许可文件在 `assets/fonts/LICENSE.txt`。
+欢迎页在 `index.html`，主页结构在 `home.html`，样式在 `styles.css`，目录筛选与弹窗在 `app.js`，分区路由在 `workspace.js`，欢迎页键盘入口在 `welcome.js`，联系页卡通互动在 `contact-mascot.js`。个人照片为 `assets/maxiao-portrait.jpg`，来源于站点主人提供的原照。卡通形象为 `assets/maxiao-mascot.png`，由内置图像生成工具参考原照生成；提示词保存在 `assets/maxiao-mascot.prompt.txt`。`particles.js` 保留早期 Canvas 实验，当前页面不加载。Inter 字体本地托管，许可文件在 `assets/fonts/LICENSE.txt`。
 
 ## 发布更新
 
 GitHub Pages 使用 `main` 分支的根目录，推送后自动部署：
 
 ```sh
-git add index.html home.html styles.css app.js content.js welcome.js workspace.js assets README.md
+git add index.html home.html styles.css app.js content.js welcome.js workspace.js contact-mascot.js assets README.md
 git commit -m "Update portfolio content"
 git push origin main
 ```

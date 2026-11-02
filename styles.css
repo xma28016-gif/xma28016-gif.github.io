@@ -20,3 +20,87 @@ dialog{color:var(--ink);background:var(--paper);width:min(680px,calc(100vw - 32p
 .workspace,.sidebar,.main-nav{min-width:0}@media(max-width:600px){.main-content{width:100%}.main-nav{max-width:100%}.sidebar-profile{flex-shrink:0}}
 
 @media(max-width:600px){.nav-link{padding:0 6px;gap:5px}}
+
+/* Contact: a light glass invitation with a personal, clickable character. */
+.contact-panel .contact-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(180px, .8fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 365px;
+  margin: 32px 0 26px;
+  padding: 36px 34px 32px;
+  overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 19px;
+  background: radial-gradient(ellipse at 88% 16%, #cad8f3b8, transparent 54%), radial-gradient(ellipse at 5% 100%, #dbececa6, transparent 48%), linear-gradient(120deg, #f9fbff, #e9effb);
+  box-shadow: 0 14px 35px #30466b10, inset 0 1px 0 #fff;
+}
+.contact-panel .contact-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 8px;
+  border: 1px solid #ffffffb8;
+  border-radius: 13px;
+  background: linear-gradient(130deg, #ffffff66, #ffffff0d);
+  pointer-events: none;
+}
+.contact-copy { position: relative; z-index: 1; min-width: 0; }
+.contact-copy .eyebrow { color: #6e80ad; font-size: 9px; letter-spacing: 1px; }
+.contact-panel .contact-copy h1 { margin: 23px 0 20px; font-size: clamp(28px, 3.1vw, 44px); font-weight: 660; line-height: 1.38; letter-spacing: -1.6px; }
+.contact-description { max-width: 390px; font-size: 11px; line-height: 1.9; color: #798aa3; }
+.contact-copy .button { margin-top: 24px; padding: 12px 19px; box-shadow: 0 6px 14px #5268e825; }
+.contact-mascot { position: relative; align-self: end; display: flex; flex-direction: column; align-items: center; min-width: 0; padding-top: 39px; }
+.mascot-halo { position: absolute; z-index: -1; width: 220px; height: 220px; max-width: 110%; top: 27%; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #fbfcff99, #c5d4f73d 75%); border: 1px solid #ffffff73; pointer-events: none; }
+.mascot-button { display: block; position: relative; width: min(100%, 220px); padding: 0; border: 0; border-radius: 28px; background: transparent; cursor: pointer; transition: transform .2s ease; }
+.mascot-button img { width: 100%; height: 285px; object-fit: contain; transform-origin: 50% 88%; user-select: none; -webkit-user-drag: none; }
+.mascot-button:hover { transform: translateY(-5px); }
+.mascot-button:active { transform: scale(.97); }
+.mascot-hint { color: #7d8eac; font-size: 9px; line-height: 1.8; margin-top: 10px; letter-spacing: .4px; }
+.mascot-hint span { display: inline-block; margin-left: 5px; color: #6279bd; }
+.mascot-greeting { position: absolute; z-index: 2; top: 1px; right: 4px; min-width: 86px; padding: 11px 16px; border: 1px solid #ffffff; border-radius: 15px 15px 15px 4px; color: #4b61c3; background: #fffdfc; box-shadow: 0 7px 22px #5268e81a; font-size: 22px; font-weight: 650; line-height: 1.2; opacity: 0; visibility: hidden; transform: translateY(6px) rotate(-5deg); transition: opacity .18s, transform .18s, visibility .18s; pointer-events: none; }
+.contact-mascot.is-greeting .mascot-greeting { opacity: 1; visibility: visible; transform: translateY(0) rotate(-5deg); }
+.contact-panel .contact-links { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 0; border-top: 1px solid var(--line); }
+.contact-panel .contact-links a { min-height: 77px; display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 18px 10px; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; transition: padding .2s, background .2s; }
+.contact-panel .contact-links small { grid-column: auto; font-size: 9px; color: #8b99ad; }
+.contact-panel .contact-links strong { font-size: 16px; font-weight: 550; overflow-wrap: anywhere; }
+.contact-panel .contact-links a > span { font-size: 20px; color: #697dc9; }
+.contact-panel .contact-links a:hover { padding-left: 20px; background: #f0f4fc; }
+@media (max-width: 1100px) {
+  .contact-panel .contact-hero { padding: 30px 27px; grid-template-columns: minmax(0, 1.35fr) minmax(160px, .8fr); gap: 6px; }
+  .contact-panel .contact-copy h1 { font-size: 32px; letter-spacing: -1px; }
+  .mascot-button img { height: 267px; }
+}
+@media (max-width: 850px) {
+  .contact-panel .contact-hero { grid-template-columns: minmax(0, 1fr) 150px; padding: 27px 23px; min-height: 340px; }
+  .contact-panel .contact-copy h1 { font-size: 26px; line-height: 1.5; letter-spacing: -.9px; }
+  .contact-description { font-size: 10px; }
+  .mascot-button img { height: 233px; }
+  .mascot-greeting { right: 0; font-size: 20px; min-width: 76px; }
+  .mascot-hint { font-size: 8px; letter-spacing: 0; }
+  .contact-panel .contact-links a { grid-template-columns: 105px minmax(0, 1fr) auto; gap: 10px; }
+  .contact-panel .contact-links strong { font-size: 14px; }
+}
+@media (max-width: 600px) {
+  .contact-panel .contact-hero { grid-template-columns: minmax(0, 1fr); gap: 13px; margin: 22px 0 25px; padding: 28px 24px 22px; border-radius: 16px; }
+  .contact-panel .contact-copy h1 { font-size: clamp(23px, 6.6vw, 32px); line-height: 1.45; letter-spacing: -1px; margin: 20px 0 17px; }
+  .contact-copy .eyebrow { font-size: 8px; letter-spacing: .6px; }
+  .contact-description { font-size: 11px; }
+  .contact-copy .button { margin-top: 20px; }
+  .contact-mascot { width: 200px; justify-self: center; padding-top: 34px; }
+  .mascot-button { width: 170px; }
+  .mascot-button img { height: 242px; }
+  .mascot-halo { width: 195px; height: 195px; top: 27%; }
+  .mascot-greeting { right: 1px; top: 2px; }
+  .mascot-hint { margin-top: 5px; font-size: 9px; }
+  .contact-panel .contact-links a { grid-template-columns: minmax(0, 1fr) auto; padding: 19px 6px; gap: 10px; }
+  .contact-panel .contact-links small { grid-column: 1 / -1; font-size: 8px; }
+  .contact-panel .contact-links strong { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot-button, .mascot-greeting, .contact-panel .contact-links a { transition: none; }
+  .mascot-button:hover, .mascot-button:active { transform: none; }
+}
