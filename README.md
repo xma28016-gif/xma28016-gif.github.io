@@ -21,8 +21,9 @@ python3 -m http.server 5173
 
 - `index.html`：页面结构
 - `styles.css`：配色、排版与手机适配
-- `app.js`：作品筛选、详情弹窗与随笔阅读
-- `assets/`：插画和图标
+- `app.js`：作品筛选与切换、详情弹窗与随笔阅读
+- `particles.js`：三角粒子星云、动画暂停与减少动态效果支持
+- `assets/`：图标与字体。Inter 字体本地托管，授权文件位于 `assets/fonts/LICENSE.txt`
 
 ## 发布更新
 
