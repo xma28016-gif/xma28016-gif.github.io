@@ -1,17 +1,123 @@
-// 在这里替换站点名称、简介、邮箱以及作品和随笔。
+// 真实项目、实践技能与文章索引。新增内容时更新对应数组。
 window.siteContent = {
-  name: '我的小站',
-  greeting: '你好，这里是我的个人空间。',
-  bio: '这个小站用来安放作品、整理思考，也收藏日常里那些容易被忽略的小事。比起急着给自己一个定义，我更想留下探索的过程。',
+  name: 'xma28016',
+  github: 'https://github.com/xma28016-gif',
+  greeting: '你好，这里是 xma28016 的个人空间。',
+  bio: '我在这里整理产品研究、交互原型与 Web 实践。从即梦 AI 的任务体验、轻颜相机的迭代方案，到酒店全景交互，留下从问题、方案到实现的探索过程。',
   email: '',
+  profileTags: ['产品研究', '交互原型', 'AI 探索', '写作与记录'],
+  reviewedAt: '2026-11-02',
   works: [
-    { id: 'mountain', title: '山野之间 · 视觉探索', category: 'design', label: '视觉设计', type: 'mountain', description: '一组以山野为灵感的海报设计示例。用有限的色彩，表达辽阔的自然。', sections: [{title:'设计思路',text:'从山峦的轮廓与落日的颜色出发，将复杂的风景提炼成几层简单的色块。暖白纸面与深浅绿色共同构成画面，留白为观看者保留想象的空间。'},{title:'你可以在这里展示',text:'替换成你自己的设计作品，补充项目背景、承担的工作与最后的成果。也可以把作品的展示图片放进 assets 文件夹。'}] },
-    { id: 'focus', title: '留白 · 专注时刻', category: 'experiment', label: '交互实验', type: 'focus', description: '一个关于专注界面的概念示例。把视线留给手边正在做的事。', sections: [{title:'从一个问题开始',text:'如果一个专注工具只保留最需要的信息，会是什么样子？这个界面概念尝试通过大字号时间、轻量进度与单一操作，减少选择的负担。'},{title:'关于这个示例',text:'这里展示的是界面概念，并未接入计时器。你可以替换成已经完成的小工具，附上演示地址和你在实现过程中的收获。'}] },
-    { id: 'journal', title: '日常切片 · 记录计划', category: 'design', label: '内容创作', type: 'journal', description: '把散落在日常里的片刻收集起来，做成一本属于自己的小册子。', sections: [{title:'记录的方式',text:'一张照片、一句听来的话，或是路上看到的一片树影，都可以成为记录的起点。不需要每一次都写得完整，让真实的感受先留下来。'},{title:'你可以在这里展示',text:'放上你的摄影集、文章合集或个人出版物，讲讲它为什么开始，又在持续的记录中发生了哪些变化。'}] }
+    {
+      id: 'ctrip-hotel-subscription', title: '携程酒店订阅体验', category: 'web', label: '交互原型', status: '交互演示',
+      repo: 'https://github.com/xma28016-gif/ctrip-hotel-subscription',
+      url: 'https://xma28016-gif.github.io/ctrip-hotel-subscription/',
+      description: '以酒店体验画册为载体，串联 360° 全景、客房视频、按晚预订演示与行程助手，让浏览、选择和体验形成完整路径。',
+      tags: ['交互原型', '全景交互', 'JavaScript', '响应式布局'], updated: '2026-10-12',
+      sections: [
+        { title: '项目内容', text: '从大厅全景到房型浏览、相册、视频与预订演示，围绕酒店选择过程组织信息。包含海滨全景与页面内行程助手。' },
+        { title: '交互与实现', text: '使用 HTML、CSS 和 JavaScript，结合 Pannellum 实现场景热点、拖动与缩放；视频按视野和页面状态加载、播放与暂停，适配触摸和键盘操作。' },
+        { title: '完整交付', text: '公开页面可体验房型切换、入住日期与晚数计算、图库和行程演示；源码仓库保留素材说明与验证脚本。' }
+      ]
+    },
+    {
+      id: 'jimeng-product-teardown', title: '即梦 AI 产品拆解', category: 'research', label: '产品研究', status: '实测报告',
+      repo: 'https://github.com/xma28016-gif/jimeng-product-teardown',
+      url: 'https://xma28016-gif.github.io/jimeng-product-teardown/',
+      description: '围绕中文海报生成与受约束改图，拆解任务流程、模型入口、费用口径与产品编排，并把判断关联到取证材料。',
+      tags: ['AI 产品评测', '产品拆解', '证据核验'], updated: '2026-10-20',
+      sections: [
+        { title: '研究任务', text: '以中文茶饮海报生成和指定原图改背景为任务，记录从参数设置、多稿筛选到编辑结果的完整可见路径。' },
+        { title: '分析内容', text: '报告覆盖产品定位、用户场景、评测维度、模型与费用、技术职责分工和架构推导，并分别标记已确认信息、推断及待验证项。' },
+        { title: '完整交付', text: '在线报告提供 10 张取证截图、证据索引与二次核验清单；研究日期为 2026 年 10 月 19 日。' }
+      ]
+    },
+    {
+      id: 'qingyan-camera-proposal', title: '轻颜相机 2.0 迭代方案', category: 'research', label: '产品策划', status: '立项评审稿',
+      repo: 'https://github.com/xma28016-gif/qingyan-camera-proposal',
+      url: 'https://xma28016-gif.github.io/qingyan-camera-proposal/',
+      description: '根据访谈材料梳理自然拍照、多人合照与玩法复用需求，形成需求优先级、版本范围、技术验证和实验验收方案。',
+      tags: ['需求分析', '用户访谈分析', '版本规划', '实验设计'], updated: '2026-10-21',
+      sections: [
+        { title: '问题与场景', text: '从自然感、清晰度、跨工具修图及多人合照的个体控制出发，梳理用户流程和探索性访谈线索。' },
+        { title: '方案与取舍', text: '对需求池中的候选需求逐一归类，明确优先级、分阶段范围、技术依赖、降级路线和验收条件。' },
+        { title: '完整交付', text: '立项评审稿包含指标定义、实验安排、资源与成本框架，以及建议的分阶段推进计划。文档更新于 2026 年 10 月 21 日。' }
+      ]
+    },
+    {
+      id: 'xma28016-gif.github.io', title: '个人网站与粒子交互', category: 'web', label: 'Web 实践', status: '已发布', currentSite: true,
+      repo: 'https://github.com/xma28016-gif/xma28016-gif.github.io', url: 'https://xma28016-gif.github.io/',
+      description: '用原生 Web 构建的个人空间，以三角粒子星云呈现好奇与探索，整合项目目录、技能标签与文章阅读入口。',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'GitHub Pages'], updated: '2026-11-02',
+      sections: [
+        { title: '内容组织', text: '首页整合个人介绍、全部公开项目、实践技能和文章索引，提供分类、搜索与项目详情。' },
+        { title: '交互与可访问性', text: '使用 Canvas 绘制三角粒子星云，支持暂停与减少动态效果偏好；页面适配手机，支持键盘导航和弹窗关闭。' },
+        { title: '完整交付', text: '网站通过 GitHub Pages 发布，字体本地托管；内容集中存放，便于持续维护。' }
+      ]
+    }
+  ],
+  skills: [
+    {
+      title: '产品研究与策划', description: '从场景与材料出发，把问题整理成可讨论、可验证的方案。',
+      items: [
+        { name: '产品拆解', projects: ['jimeng-product-teardown'] },
+        { name: 'AI 产品评测', projects: ['jimeng-product-teardown'] },
+        { name: '需求分析', projects: ['qingyan-camera-proposal'] },
+        { name: '用户访谈分析', projects: ['qingyan-camera-proposal'] },
+        { name: '版本规划', projects: ['qingyan-camera-proposal'] },
+        { name: '实验设计', projects: ['qingyan-camera-proposal'] }
+      ]
+    },
+    {
+      title: '交互与体验', description: '把方案放进可操作的页面，关注浏览、反馈与不同设备上的体验。',
+      items: [
+        { name: '交互原型', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: '全景交互', projects: ['ctrip-hotel-subscription'] },
+        { name: '视频体验', projects: ['ctrip-hotel-subscription'] },
+        { name: '响应式布局', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: '键盘可访问性', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] }
+      ]
+    },
+    {
+      title: '技术与工具', description: '在项目中使用的技术栈。点击标签，可以查看对应实践。',
+      items: [
+        { name: 'HTML', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: 'CSS', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: 'JavaScript', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: 'Canvas', projects: ['xma28016-gif.github.io'] },
+        { name: 'GitHub Pages', projects: ['ctrip-hotel-subscription', 'jimeng-product-teardown', 'qingyan-camera-proposal', 'xma28016-gif.github.io'] }
+      ]
+    }
   ],
   notes: [
-    { id:'start', title:'先开始，再慢慢找到自己的节奏', tag:'关于创造', duration:'2 分钟', paragraphs:['面对一张空白的纸，最难的往往是落下第一笔。我们想先把方向想清楚，把工具备齐，等到一个足够好的时机。可只要还没有动手，问题就一直停留在想象里。','不妨先把目标缩小。写一段话，画一张草图，让一个最简单的页面出现在屏幕上。完成这个小动作之后，下一步往往会变得具体。','节奏也可以慢慢调整。今天有精力，就多做一点；明天忙碌，留下一句记录也很好。让创作成为生活里可以持续的一部分，比一次完成很多更适合走得长远。'] },
-    { id:'observe', title:'在日常里，练习多看一眼', tag:'生活观察', duration:'2 分钟', paragraphs:['熟悉的路很容易让人只想着抵达。走过同一条街许多次，我们也许仍然说不出街角那棵树是什么颜色。','偶尔把脚步放慢，注意力便有了新的落点。门口刚换的招牌、午后斜照在墙上的光、行人等红灯时的小动作，平常的事物也有可以细看的部分。','记录不必承担太大的任务。拍一张照片，记下一个颜色，写一句当时想到的话。过些时候再看，这些片段就会成为通往那一天的小入口。'] },
-    { id:'space', title:'为什么想给自己留一个小站', tag:'建站手记', duration:'2 分钟', paragraphs:['作品会散落在不同的文件夹里，想法也常常留在各种笔记里。一个小站提供了一个固定的入口，让这些内容可以被重新整理和看见。','从一个简单的页面开始就很好。选几件愿意分享的作品，写一段此刻的自我介绍，留下几篇想保留的文字。内容不必填满所有空白，空白也可以等以后的自己来补。','小站可以慢慢变化。以后有了新的项目，添上一页；对过去的想法有了不同的理解，再写一段。它会在一次次更新中，留下你走过的路径。'] }
+    {
+      id: 'qingyan-camera-iteration', title: '轻颜相机 2.0：从拍得好看，到愿意发布', category: '产品策划', date: '2026-10-21',
+      description: '围绕自然拍照、多人合照和玩法复用，整理需求取舍、成功指标、验证方法与分阶段立项方案。',
+      tags: ['需求分析', '版本规划', '实验设计'],
+      url: 'https://xma28016-gif.github.io/qingyan-camera-proposal/', source: '完整立项报告'
+    },
+    {
+      id: 'jimeng-product-study', title: '即梦 AI：从中文海报生成，到受约束改图', category: '产品研究', date: '2026-10-19',
+      description: '通过实际生成与修改任务，观察指令遵循、编辑可控性、模型入口与费用口径，并保留证据和待验证问题。',
+      tags: ['AI 产品评测', '产品拆解', '证据核验'],
+      url: 'https://xma28016-gif.github.io/jimeng-product-teardown/', source: '完整拆解报告'
+    }
   ]
 };
+
+// 公众号名称与入口来自站点主人提供的信息；未读取的文章不编造日期或摘要。
+window.siteContent.publication = {
+  name: '代码不再冷冰冰',
+  url: 'https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ',
+  description: '在公众号里，继续记录、思考与分享。'
+};
+window.siteContent.notes.unshift({
+  id: 'wechat-ai-and-jobs',
+  title: 'AI先裁谁？公司省下的人，最后去了哪里',
+  category: '公众号',
+  date: '',
+  description: '来自公众号「代码不再冷冰冰」。前往微信阅读原文。',
+  tags: ['AI 与职场', '公众号'],
+  url: 'https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ',
+  source: '公众号原文'
+});

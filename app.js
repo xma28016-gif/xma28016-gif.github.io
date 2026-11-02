@@ -1,72 +1,103 @@
 'use strict';
 const content = window.siteContent;
-const stage = document.querySelector('#work-stage');
+const projectList = document.querySelector('#project-list');
 const noteList = document.querySelector('#note-list');
 const dialog = document.querySelector('#detail-dialog');
 const dialogContent = document.querySelector('#dialog-content');
-const dots = document.querySelector('#work-dots');
-const previous = document.querySelector('#work-prev');
-const next = document.querySelector('#work-next');
-const countLabel = document.querySelector('#work-count');
+const projectSearch = document.querySelector('#project-search');
+const articleSearch = document.querySelector('#article-search');
+const articleCategory = document.querySelector('#article-category');
+const activeSkillLabel = document.querySelector('#active-skill');
+const skillItems = content.skills.flatMap(group => group.items);
+const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase().trim();
 const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-let category = 'all';
-let currentWork = 0;
+let projectCategory = 'all';
+let activeSkill = null;
 
-function artwork(type) {
-  const mountain = '<svg viewBox="0 0 600 440" aria-hidden="true"><g fill="none" stroke-width="1"><path stroke="#8052ff" d="m45 315 92-83 56 41 83-138 77 109 74-132 116 204-154-38-108 66-88-71-148 42 200 19 108-90 74-132M137 232l108 102 31-199 5 209 72-100 36 34 38-166M193 273l52 61 144-56 154 38M45 315l236 29 262-28"/><path stroke="#ffb829" d="m137 232 56 41 83-138M353 244l74-132 116 204"/><path stroke="#15846e" d="m45 315 200 19 144-56 154 38M193 273l88 71"/><path stroke="#cf7ac6" d="m94 170 5 9-10-1Zm360 50 5 8-11 1Z"/><path stroke="#8052ff" d="m337 100 4 8-9-1Zm-167 239 4 8-9-1Z"/><circle cx="391" cy="116" r="36" stroke="#ffb829" stroke-dasharray="1 5" opacity=".6"/></g><text x="46" y="76" font-family="Inter,sans-serif" font-size="9" fill="#9a9a9a" letter-spacing="2">FIELD STUDY / 001</text><text x="45" y="397" font-family="Inter,sans-serif" font-size="26" font-weight="200" letter-spacing="-1" fill="#fff">INTO THE WILD.</text></svg>';
-  const focus = '<svg viewBox="0 0 600 440" aria-hidden="true"><g fill="none"><circle cx="300" cy="216" r="156" stroke="#8052ff" stroke-width="1" stroke-dasharray="1 9"/><path d="M300 60a156 156 0 0 1 150 199" stroke="#8052ff" stroke-width="2"/><circle cx="449" cy="260" r="3" fill="#ffb829"/><path d="m112 103 5 10-11-1Zm365 230 5 9-10-1Zm-73-275 4 8-9-1Z" stroke="#ffb829"/><path d="m153 337 5 9-10-1Zm316-190 4 8-9-1Z" stroke="#8052ff"/></g><text x="300" y="226" text-anchor="middle" font-family="Inter,sans-serif" font-size="86" font-weight="200" letter-spacing="-4" fill="#fff">25:00</text><text x="300" y="263" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" fill="#9a9a9a">A MOMENT OF FOCUS</text></svg>';
-  const journal = '<svg viewBox="0 0 600 440" aria-hidden="true"><g fill="none" stroke-width="1"><path stroke="#8052ff" d="m117 98 7 13-14-1Zm332 56 5 10-11-1Zm-10 193 7 12-14-1Zm-301-35 5 9-10-1Zm47-246 4 8-9-1Z"/><path stroke="#ffb829" d="m185 150 4 9-9-1Zm309 110 5 9-10-1Zm-115 112 5 9-10-1Z"/><path stroke="#15846e" d="m96 210 5 9-11 1Zm325-115 4 8-9-1Z"/></g><text x="190" y="206" font-family="Inter,PingFang SC,sans-serif" font-size="80" font-weight="200" letter-spacing="-5" fill="#fff">日常</text><text x="247" y="297" font-family="Inter,PingFang SC,sans-serif" font-size="80" font-weight="200" letter-spacing="-5" fill="#fff">切片</text><text x="190" y="343" font-family="Inter,sans-serif" font-size="8" fill="#9a9a9a" letter-spacing="2">EVERYDAY / NEVER ORDINARY</text></svg>';
-  return '<div class="work-art">' + ({ mountain, focus, journal }[type] || journal) + '</div>';
+function safeURL(value) {
+  try {
+    const url = new URL(value, window.location.href);
+    return ['https:', 'http:'].includes(url.protocol) ? url.href : '';
+  } catch { return ''; }
 }
-
-function visibleWorks() {
-  return content.works.filter(work => category === 'all' || work.category === category);
+function externalLink(url, label, className = 'ghost-link') {
+  const href = safeURL(url);
+  return href ? '<a class="' + className + '" href="' + escapeHTML(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHTML(label) + ' <span aria-hidden="true">↗</span></a>' : '';
 }
-function renderWork() {
-  const works = visibleWorks();
-  currentWork = Math.max(0, Math.min(currentWork, works.length - 1));
-  const work = works[currentWork];
-  if (!work) {
-    stage.innerHTML = '<p class="body-copy">作品正在整理中。</p>';
-    dots.innerHTML = '';
-    countLabel.textContent = '00 / 00';
-    previous.disabled = next.disabled = true;
-    return;
-  }
-  stage.innerHTML = '<article class="work-slide">' + artwork(work.type) + '<div class="work-description"><p class="work-category">' + escapeHTML(work.label) + ' / 示例项目</p><h3>' + escapeHTML(work.title.split(' · ')[0]) + '</h3><p class="body-copy">' + escapeHTML(work.description) + '</p><button class="ghost-link accent-link" type="button" data-work="' + escapeHTML(work.id) + '" aria-label="查看' + escapeHTML(work.title) + '详情">了解这个项目 <span aria-hidden="true">↗</span></button></div></article>';
-  dots.innerHTML = works.map((item, i) => '<button type="button" class="' + (i === currentWork ? 'active' : '') + '" data-select-work="' + i + '" aria-label="展示作品：' + escapeHTML(item.title) + '" aria-pressed="' + (i === currentWork) + '"></button>').join('');
-  countLabel.textContent = String(currentWork + 1).padStart(2, '0') + ' / ' + String(works.length).padStart(2, '0');
-  previous.disabled = currentWork === 0;
-  next.disabled = currentWork === works.length - 1;
+function tagsHTML(tags) {
+  return '<ul class="content-tags" aria-label="内容标签">' + tags.map(tag => '<li>' + escapeHTML(tag) + '</li>').join('') + '</ul>';
 }
-previous.addEventListener('click', () => { currentWork--; renderWork(); });
-next.addEventListener('click', () => { currentWork++; renderWork(); });
-dots.addEventListener('click', event => {
-  const button = event.target.closest('[data-select-work]');
-  if (!button) return;
-  currentWork = Number(button.dataset.selectWork);
-  renderWork();
-  dots.querySelector('[data-select-work="' + currentWork + '"]').focus({ preventScroll: true });
-});
-document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
-  category = button.dataset.filter;
-  currentWork = 0;
-  document.querySelectorAll('.filter').forEach(item => {
-    const active = item === button;
-    item.classList.toggle('active', active);
-    item.setAttribute('aria-pressed', String(active));
+function projectMatches(work) {
+  const query = normalize(projectSearch.value);
+  const haystack = normalize([work.title, work.description, work.label, ...work.tags, ...work.sections.map(section => section.text)].join(' '));
+  return (projectCategory === 'all' || work.category === projectCategory)
+    && (!activeSkill || activeSkill.projects.includes(work.id))
+    && (!query || haystack.includes(query));
+}
+function renderProjects() {
+  const works = content.works.filter(projectMatches);
+  projectList.innerHTML = works.map(work => {
+    const index = content.works.indexOf(work) + 1;
+    const liveLink = work.currentSite ? '<span class="current-site">当前网站</span>' : externalLink(work.url, work.category === 'research' ? '阅读报告' : '在线体验');
+    return '<article class="project-item" data-project-id="' + escapeHTML(work.id) + '"><p class="project-meta"><span>' + String(index).padStart(2, '0') + ' / ' + escapeHTML(work.label) + '</span><span>' + escapeHTML(work.status) + '</span></p><h3>' + escapeHTML(work.title) + '</h3><p class="project-description">' + escapeHTML(work.description) + '</p>' + tagsHTML(work.tags) + '<div class="project-links"><button type="button" class="ghost-link accent-link" data-project="' + escapeHTML(work.id) + '" aria-label="查看' + escapeHTML(work.title) + '项目详情">项目详情 <span aria-hidden="true">↗</span></button>' + liveLink + externalLink(work.repo, 'GitHub') + '</div></article>';
+  }).join('');
+  document.querySelector('#project-count').textContent = '显示 ' + works.length + ' / ' + content.works.length + ' 个公开项目';
+  document.querySelector('#project-empty').hidden = works.length !== 0;
+  activeSkillLabel.hidden = !activeSkill;
+  if (activeSkill) activeSkillLabel.textContent = '技能：' + activeSkill.name + ' × 清除';
+}
+document.querySelectorAll('[data-project-filter]').forEach(button => button.addEventListener('click', () => {
+  projectCategory = button.dataset.projectFilter;
+  document.querySelectorAll('[data-project-filter]').forEach(item => {
+    const selected = item === button;
+    item.classList.toggle('active', selected);
+    item.setAttribute('aria-pressed', String(selected));
   });
-  renderWork();
+  renderProjects();
 }));
-renderWork();
+projectSearch.addEventListener('input', renderProjects);
+activeSkillLabel.addEventListener('click', () => {
+  activeSkill = null;
+  document.querySelectorAll('[data-skill]').forEach(button => button.setAttribute('aria-pressed', 'false'));
+  renderProjects();
+});
 
-document.querySelectorAll('[data-site-name]').forEach(el => { el.textContent = content.name; });
-document.querySelector('[data-footer-name]').textContent = content.name;
-document.querySelector('#about-greeting').textContent = content.greeting;
-document.querySelector('#about-bio').textContent = content.bio;
-document.querySelector('#year').textContent = new Date().getFullYear();
-document.title = content.name + ' — 好奇，未完待续';
-noteList.innerHTML = content.notes.map((note, i) => '<article class="note-item"><p class="note-meta"><span>0' + (i + 1) + '</span><span>' + escapeHTML(note.tag) + ' / 示例随笔</span></p><h3>' + escapeHTML(note.title) + '</h3><p class="note-excerpt">' + escapeHTML(note.paragraphs[0].slice(0, 64)) + (note.paragraphs[0].length > 64 ? '…' : '') + '</p><button type="button" class="ghost-link note-read" data-note="' + escapeHTML(note.id) + '" aria-label="阅读随笔：' + escapeHTML(note.title) + '">阅读全文 <span aria-hidden="true">↗</span><small>' + escapeHTML(note.duration) + '阅读</small></button></article>').join('');
+document.querySelector('#skill-groups').innerHTML = content.skills.map((group, i) => '<section class="skill-group" aria-labelledby="skill-group-' + i + '"><h3 id="skill-group-' + i + '">' + escapeHTML(group.title) + '</h3><p>' + escapeHTML(group.description) + '</p><div class="skill-tags">' + group.items.map(skill => '<button type="button" class="skill-tag" data-skill="' + escapeHTML(skill.name) + '" aria-pressed="false" aria-label="查看' + escapeHTML(skill.name) + '对应项目">' + escapeHTML(skill.name) + '<span aria-hidden="true">↗</span></button>').join('') + '</div></section>').join('');
+document.querySelector('#skill-groups').addEventListener('click', event => {
+  const button = event.target.closest('[data-skill]');
+  if (!button) return;
+  activeSkill = skillItems.find(skill => skill.name === button.dataset.skill);
+  projectCategory = 'all';
+  projectSearch.value = '';
+  document.querySelectorAll('[data-project-filter]').forEach(item => {
+    const selected = item.dataset.projectFilter === 'all';
+    item.classList.toggle('active', selected);
+    item.setAttribute('aria-pressed', String(selected));
+  });
+  document.querySelectorAll('[data-skill]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  renderProjects();
+  const heading = document.querySelector('#projects-heading');
+  heading.focus({ preventScroll: true });
+  document.querySelector('#works').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+});
+
+const categories = [...new Set(content.notes.map(note => note.category))];
+articleCategory.innerHTML = '<option value="all">全部分类</option>' + categories.map(category => '<option value="' + escapeHTML(category) + '">' + escapeHTML(category) + '</option>').join('');
+function renderArticles() {
+  const query = normalize(articleSearch.value);
+  const notes = content.notes.filter(note => {
+    const text = normalize([note.title, note.description, note.category, ...note.tags].join(' '));
+    return (articleCategory.value === 'all' || note.category === articleCategory.value) && (!query || text.includes(query));
+  });
+  noteList.innerHTML = notes.map(note => {
+    const date = note.date ? '<time datetime="' + escapeHTML(note.date) + '">' + escapeHTML(note.date.replaceAll('-', '.')) + '</time>' : '<span>微信公众号</span>';
+    return '<article class="note-item" data-article-id="' + escapeHTML(note.id) + '"><p class="note-meta"><span>' + escapeHTML(note.category) + '</span>' + date + '</p><h3>' + externalLink(note.url, note.title, 'article-title') + '</h3><p class="note-excerpt">' + escapeHTML(note.description) + '</p>' + tagsHTML(note.tags) + externalLink(note.url, note.source, 'ghost-link note-read') + '</article>';
+  }).join('');
+  document.querySelector('#article-count').textContent = '已收录 ' + content.notes.length + ' 篇 · 当前显示 ' + notes.length + ' 篇';
+  document.querySelector('#article-empty').hidden = notes.length !== 0;
+}
+articleSearch.addEventListener('input', renderArticles);
+articleCategory.addEventListener('change', renderArticles);
 
 function openDetail(markup) {
   dialogContent.innerHTML = markup;
@@ -81,26 +112,38 @@ dialog.addEventListener('click', event => {
   const rect = dialog.getBoundingClientRect();
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
 });
-stage.addEventListener('click', event => {
-  const button = event.target.closest('[data-work]');
+projectList.addEventListener('click', event => {
+  const button = event.target.closest('[data-project]');
   if (!button) return;
-  const work = content.works.find(item => item.id === button.dataset.work);
-  openDetail('<p class="dialog-kicker">' + escapeHTML(work.label) + ' / 示例项目</p><h2 id="dialog-title">' + escapeHTML(work.title) + '</h2>' + artwork(work.type) + '<p>' + escapeHTML(work.description) + '</p>' + work.sections.map(section => '<h3>' + escapeHTML(section.title) + '</h3><p>' + escapeHTML(section.text) + '</p>').join(''));
-});
-noteList.addEventListener('click', event => {
-  const button = event.target.closest('[data-note]');
-  if (!button) return;
-  const note = content.notes.find(item => item.id === button.dataset.note);
-  openDetail('<p class="dialog-kicker">' + escapeHTML(note.tag) + ' / 示例随笔</p><h2 id="dialog-title">' + escapeHTML(note.title) + '</h2>' + note.paragraphs.map(paragraph => '<p>' + escapeHTML(paragraph) + '</p>').join('') + '<p class="placeholder">这是一篇展示阅读效果的示例随笔，可以替换为自己的文字。</p>');
+  const work = content.works.find(item => item.id === button.dataset.project);
+  if (!work) return;
+  const live = work.currentSite ? '' : externalLink(work.url, work.category === 'research' ? '阅读完整报告' : '体验完整项目', 'button primary');
+  openDetail('<p class="dialog-kicker">' + escapeHTML(work.label) + ' / ' + escapeHTML(work.status) + '</p><h2 id="dialog-title">' + escapeHTML(work.title) + '</h2>' + tagsHTML(work.tags) + '<p>' + escapeHTML(work.description) + '</p>' + work.sections.map(section => '<h3>' + escapeHTML(section.title) + '</h3><p>' + escapeHTML(section.text) + '</p>').join('') + '<div class="dialog-links">' + live + externalLink(work.repo, '查看源码') + externalLink(work.repo + '/blob/main/README.md', '项目说明') + '</div>');
 });
 document.querySelector('#contact-button').addEventListener('click', () => {
   const email = content.email.trim();
-  if (email && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) {
-    openDetail('<p class="dialog-kicker">SAY HELLO</p><h2 id="dialog-title">很高兴认识你。</h2><p>可以通过邮件联系我，期待与你交流。</p><a class="button primary" href="mailto:' + encodeURIComponent(email) + '">给我写信 ↗</a><p>' + escapeHTML(email) + '</p>');
-  } else {
-    openDetail('<p class="dialog-kicker">SAY HELLO</p><h2 id="dialog-title">期待与你连接。</h2><p>这个小站的联系方式还没有填写。</p><p class="placeholder">联系方式即将补充，感谢你的来访。</p><a class="ghost-link accent-link" href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer">前往 GitHub ↗</a>');
-  }
+  const emailLink = email && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) ? '<a class="button primary" href="mailto:' + encodeURIComponent(email) + '">给我写信 ↗</a>' : '';
+  openDetail('<p class="dialog-kicker">SAY HELLO</p><h2 id="dialog-title">一起交流。</h2><p>欢迎通过 GitHub 交流项目，或前往公众号阅读我的文字。</p><div class="dialog-links">' + emailLink + externalLink(content.github, 'GitHub 主页', emailLink ? 'ghost-link' : 'button primary') + (content.publication ? externalLink(content.publication.url, content.publication.name) : '') + '</div>');
 });
+
+if (content.publication) {
+  const publication = document.querySelector('#publication');
+  publication.hidden = false;
+  publication.innerHTML = '<p class="publication-label">微信公众号</p><h3>' + escapeHTML(content.publication.name) + '</h3><p>' + escapeHTML(content.publication.description) + '</p>' + externalLink(content.publication.url, '阅读公众号文章', 'ghost-link accent-link');
+}
+document.querySelectorAll('[data-site-name]').forEach(el => { el.textContent = content.name; });
+document.querySelector('[data-footer-name]').textContent = content.name;
+document.querySelector('#about-greeting').textContent = content.greeting;
+document.querySelector('#about-bio').textContent = content.bio;
+document.querySelector('#year').textContent = new Date().getFullYear();
+document.querySelector('#profile-tags').innerHTML = content.profileTags.map(tag => '<span>' + escapeHTML(tag) + '</span>').join('');
+document.querySelector('[data-count="projects"]').textContent = content.works.length;
+document.querySelector('[data-count="skills"]').textContent = new Set(skillItems.map(skill => skill.name)).size;
+document.querySelector('[data-count="articles"]').textContent = content.notes.length;
+document.title = content.name + ' — 项目、技能与写作';
+renderProjects();
+renderArticles();
+
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
@@ -112,4 +155,4 @@ const sectionObserver = new IntersectionObserver(entries => {
     });
   });
 }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
-document.querySelectorAll('#home, #works, #notes, #about').forEach(section => sectionObserver.observe(section));
+document.querySelectorAll('#home, #works, #skills, #notes, #about').forEach(section => sectionObserver.observe(section));

@@ -1,38 +1,51 @@
-# 我的小站
+# xma28016 的个人主页
 
-一个包含个人介绍、作品和随笔的中文个人主页，使用原生 HTML、CSS 和 JavaScript，无需安装依赖或构建。
+产品研究、交互原型、Web 实践和文章归档。使用原生 HTML、CSS、JavaScript，无需构建。
 
-- 网站地址：https://xma28016-gif.github.io/
-- 源码仓库：https://github.com/xma28016-gif/xma28016-gif.github.io
+- 网站：https://xma28016-gif.github.io/
+- 源码：https://github.com/xma28016-gif/xma28016-gif.github.io
+
+## 内容与功能
+
+- 展示全部公开项目，支持分类、关键词搜索、详情和原始作品访问。
+- 个人技能按产品研究、交互体验、技术工具分组；点击标签可筛选对应项目。
+- 文章支持主题搜索和分类，保留公众号原文与完整研究报告的链接。
+- Canvas 粒子动画支持暂停、减少动态效果偏好及页面后台暂停。
+
+当前项目资料来自公开仓库及其报告。技能描述对应具体项目实践，不使用熟练度分数。私有仓库未收录。
+
+公众号为「代码不再冷冰冰」。已收录站点主人提供的文章入口；没有取得的历史文章不编造标题、日期或摘要。
 
 ## 本地预览
-
-在仓库目录运行：
 
 ```sh
 python3 -m http.server 5173
 ```
 
-然后访问 http://localhost:5173/。
+打开 http://localhost:5173/。
 
-## 修改个人内容
+## 维护内容
 
-编辑 `content.js` 中的站点名称、简介、邮箱、作品和随笔。填写 `email` 后，联系入口就会显示写信按钮。当前作品和随笔均为示例，请替换为自己的内容。
+所有内容集中在 `content.js`：
 
-- `index.html`：页面结构
-- `styles.css`：配色、排版与手机适配
-- `app.js`：作品筛选与切换、详情弹窗与随笔阅读
-- `particles.js`：三角粒子星云、动画暂停与减少动态效果支持
-- `assets/`：图标与字体。Inter 字体本地托管，授权文件位于 `assets/fonts/LICENSE.txt`
+- `works`：项目标题、分类、状态、简介、标签、详细说明、在线地址与源码仓库。
+- `skills`：技能分组与项目 ID 的对应关系。
+- `notes`：文章标题、分类、日期、摘要、标签、原文链接和来源。日期不确定时保留空字符串。
+- `publication`：公众号名称、说明和已确认的文章入口。
+- `profileTags`、`greeting`、`bio`：个人标签与介绍。
+
+新增公开项目时，同时维护相关技能中的项目 ID。新增公众号文章时，将标题与原文链接加入 `notes`，可同时补充已确认的日期和摘要。
+
+页面结构在 `index.html`，样式在 `styles.css`，目录筛选与弹窗在 `app.js`，粒子视觉在 `particles.js`。Inter 字体本地托管，许可文件在 `assets/fonts/LICENSE.txt`。
 
 ## 发布更新
 
-GitHub Pages 使用 `main` 分支的根目录。提交并推送修改后，GitHub 会自动更新网站：
+GitHub Pages 使用 `main` 分支的根目录，推送后自动部署：
 
 ```sh
-git add index.html styles.css app.js content.js assets README.md
-git commit -m "Update personal website"
+git add index.html styles.css app.js content.js particles.js assets README.md
+git commit -m "Update portfolio content"
 git push origin main
 ```
 
-`.nojekyll` 保证页面按静态文件发布，不经过 Jekyll 处理。
+根目录的 `.nojekyll` 保留静态资源发布方式。
