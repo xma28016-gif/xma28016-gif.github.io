@@ -77,8 +77,8 @@ document.querySelector('#skill-groups').addEventListener('click', event => {
   document.querySelectorAll('[data-skill]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   renderProjects();
   const heading = document.querySelector('#projects-heading');
+  window.showWorkspacePanel('works');
   heading.focus({ preventScroll: true });
-  document.querySelector('#works').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
 });
 
 const categories = [...new Set(content.notes.map(note => note.category))];
@@ -137,22 +137,9 @@ document.querySelector('#about-greeting').textContent = content.greeting;
 document.querySelector('#about-bio').textContent = content.bio;
 document.querySelector('#year').textContent = new Date().getFullYear();
 document.querySelector('#profile-tags').innerHTML = content.profileTags.map(tag => '<span>' + escapeHTML(tag) + '</span>').join('');
-document.querySelector('[data-count="projects"]').textContent = content.works.length;
-document.querySelector('[data-count="skills"]').textContent = new Set(skillItems.map(skill => skill.name)).size;
-document.querySelector('[data-count="articles"]').textContent = content.notes.length;
+document.querySelectorAll('[data-count="projects"]').forEach(el => { el.textContent = content.works.length; });
+document.querySelectorAll('[data-count="skills"]').forEach(el => { el.textContent = new Set(skillItems.map(skill => skill.name)).size; });
+document.querySelectorAll('[data-count="articles"]').forEach(el => { el.textContent = content.notes.length; });
 document.title = content.name + ' — 项目、技能与写作';
 renderProjects();
 renderArticles();
-
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    document.querySelectorAll('.nav-link').forEach(link => {
-      const active = link.hash === '#' + entry.target.id;
-      link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  });
-}, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
-document.querySelectorAll('#home, #works, #skills, #notes, #about').forEach(section => sectionObserver.observe(section));

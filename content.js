@@ -1,8 +1,8 @@
 // 真实项目、实践技能与文章索引。新增内容时更新对应数组。
 window.siteContent = {
-  name: 'xma28016',
+  name: '马骁',
   github: 'https://github.com/xma28016-gif',
-  greeting: '你好，这里是 xma28016 的个人空间。',
+  greeting: '从真实的问题出发，把想法变成可以体验的作品。',
   bio: '我在这里整理产品研究、交互原型与 Web 实践。从即梦 AI 的任务体验、轻颜相机的迭代方案，到酒店全景交互，留下从问题、方案到实现的探索过程。',
   email: '',
   profileTags: ['产品研究', '交互原型', 'AI 探索', '写作与记录'],
@@ -45,13 +45,13 @@ window.siteContent = {
       ]
     },
     {
-      id: 'xma28016-gif.github.io', title: '个人网站与粒子交互', category: 'web', label: 'Web 实践', status: '已发布', currentSite: true,
+      id: 'xma28016-gif.github.io', title: '个人网站 · MX OS', category: 'web', label: 'Web 实践', status: '已发布', currentSite: true,
       repo: 'https://github.com/xma28016-gif/xma28016-gif.github.io', url: 'https://xma28016-gif.github.io/',
-      description: '用原生 Web 构建的个人空间，以三角粒子星云呈现好奇与探索，整合项目目录、技能标签与文章阅读入口。',
+      description: '用原生 Web 构建的个人空间。从终端欢迎页进入桌面式主页，探索项目目录、实践技能与文章归档。',
       tags: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'GitHub Pages'], updated: '2026-11-02',
       sections: [
         { title: '内容组织', text: '首页整合个人介绍、全部公开项目、实践技能和文章索引，提供分类、搜索与项目详情。' },
-        { title: '交互与可访问性', text: '使用 Canvas 绘制三角粒子星云，支持暂停与减少动态效果偏好；页面适配手机，支持键盘导航和弹窗关闭。' },
+        { title: '交互与可访问性', text: '支持点击或回车进入主页、侧栏分区切换、技能关联项目和浏览器前进后退。适配手机与键盘操作；仓库保留早期 Canvas 粒子实验。' },
         { title: '完整交付', text: '网站通过 GitHub Pages 发布，字体本地托管；内容集中存放，便于持续维护。' }
       ]
     }

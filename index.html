@@ -2,50 +2,27 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="xma28016 的产品研究、交互原型、Web 项目、技能标签与文章归档。">
-  <title>xma28016 — 项目、技能与写作</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#e9edf4">
+  <meta name="description" content="马骁的个人空间。产品研究、交互实践与写作，从这里开始探索。">
+  <title>欢迎来到马骁的个人空间 · MX OS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <script src="content.js" defer></script>
-  <script src="app.js" defer></script>
-  <script src="particles.js" defer></script>
+  <script src="welcome.js" defer></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">跳至正文</a>
-  <header class="header container">
-    <a class="brand" href="#home" aria-label="我的小站，回到首页"><svg viewBox="0 0 30 32" aria-hidden="true"><path fill="#8052ff" d="M15 1 29 27 17 23 12 31 1 21Z"/><path fill="#15846e" d="m1 21 16 2-5 8Z"/><path fill="#bca4ff" d="m15 1 2 22-6-10Z"/></svg><span data-site-name>xma28016</span></a>
-    <nav aria-label="主导航"><a class="nav-link" href="#works">项目</a><a class="nav-link" href="#skills">技能</a><a class="nav-link" href="#notes">文章</a><a class="nav-link" href="#about">关于</a><a class="github-link" href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
-    <a class="header-contact" href="#contact">打个招呼 <span aria-hidden="true">↗</span></a>
-  </header>
-  <main id="main">
-    <section id="home" class="hero container">
-      <div class="hero-copy">
-        <p class="eyebrow">PRODUCT · INTERACTION · WRITING</p>
-        <h1>让好奇，<br>持续发生。</h1>
-        <p class="hero-description">从产品研究到交互实践，<br>把思考整理成可体验、可阅读的作品。</p><div id="profile-tags" class="profile-tags" aria-label="个人标签"></div>
-        <div class="hero-actions"><a class="button primary" href="#works">浏览全部项目 <span aria-hidden="true">↗</span></a><a class="ghost-link" href="#notes">阅读文章 <span aria-hidden="true">↗</span></a></div>
-        <div class="profile-counts"><a href="#works"><strong data-count="projects">4</strong><span>公开项目</span></a><a href="#skills"><strong data-count="skills">16</strong><span>技能标签</span></a><a href="#notes"><strong data-count="articles">3</strong><span>文章与报告</span></a></div>
-      </div>
-      <div class="hero-constellation"><canvas id="hero-particles" aria-label="由彩色三角粒子构成、缓慢转动的双叶星云">彩色粒子星云</canvas></div>
-      <div class="hero-bottom"><a class="scroll-cue" href="#works"><span aria-hidden="true">↓</span> SCROLL TO EXPLORE</a><div class="particle-caption"><span class="live-dot" aria-hidden="true"></span><span>IDEAS IN MOTION</span><button type="button" id="animation-toggle" aria-label="暂停粒子动画" aria-pressed="false" hidden>暂停动效 <span aria-hidden="true">Ⅱ</span></button></div></div>
-    </section>
-    <section id="works" class="work-section container section-space">
-      <div class="section-intro"><div><p class="eyebrow">01 / ALL PROJECTS</p><h2 id="projects-heading" tabindex="-1">把想法，<br>做成项目。</h2></div><p class="intro-copy">原型、研究与持续维护的网站。<br>每个项目，都有自己的问题与路径。<br><span>从这里访问完整作品、报告和源码。</span></p></div>
-      <div class="catalog-toolbar"><div class="filters" role="group" aria-label="筛选项目"><button class="filter active" type="button" data-project-filter="all" aria-pressed="true">全部项目</button><button class="filter" type="button" data-project-filter="research" aria-pressed="false">产品研究</button><button class="filter" type="button" data-project-filter="web" aria-pressed="false">交互与 Web</button></div><label class="search-field"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><span class="sr-only">搜索项目</span><input id="project-search" type="search" placeholder="搜索项目、技术或关键词" autocomplete="off"></label></div>
-      <div class="catalog-status"><p id="project-count" aria-live="polite"></p><button type="button" id="active-skill" class="clear-skill" hidden></button></div>
-      <div id="project-list" class="project-list"></div>
-      <p id="project-empty" class="empty-state" hidden>暂时没有匹配的项目，试试其他分类或关键词。</p>
-      <a class="ghost-link catalog-source" href="https://github.com/xma28016-gif?tab=repositories" target="_blank" rel="noopener noreferrer">在 GitHub 查看全部公开仓库 <span aria-hidden="true">↗</span></a>
-    </section>
-    <section id="skills" class="skills-section container section-space"><div class="skills-heading"><p class="eyebrow">02 / SKILLS & PRACTICE</p><h2>技能，<br>来自实践。</h2><p class="intro-copy">产品思考与动手实现，<br>都在具体的项目里积累。</p><p class="skills-hint">点击技能标签，查看对应项目 <span aria-hidden="true">↗</span></p></div><div id="skill-groups" class="skill-groups"></div></section>
-    <section id="notes" class="notes-section container section-space"><div class="notes-heading"><p class="eyebrow">03 / WRITING & RESEARCH</p><h2>写作，<br>让思考可见。</h2><p class="intro-copy">产品观察、方案思考与实践记录。<br>把问题展开，也把过程留下。</p><div id="publication" class="publication" hidden></div><span class="notes-signature" aria-hidden="true">Thinking<br>out loud<span>↗</span></span></div><div class="articles-column"><div class="article-toolbar"><label class="search-field"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><span class="sr-only">搜索文章</span><input id="article-search" type="search" placeholder="搜索文章、主题或标签" autocomplete="off"></label><label><span class="sr-only">文章分类</span><select id="article-category" aria-label="文章分类"><option value="all">全部分类</option></select></label></div><p id="article-count" class="article-count" aria-live="polite"></p><div id="note-list" class="note-list"></div><p id="article-empty" class="empty-state" hidden>没有找到相关文章，试试其他关键词。</p></div></section>
-    <section id="about" class="about-section container section-space"><div class="about-visual"><canvas id="about-particles" aria-label="紫色与琥珀色三角粒子组成的环形星云">环形粒子星云</canvas><span class="visual-caption">ALWAYS A WORK IN PROGRESS.</span></div><div class="about-copy"><p class="eyebrow">04 / A LITTLE ABOUT ME</p><h2>保持开放。<br>保持自己。</h2><p id="about-greeting" class="about-greeting">你好，这里是 xma28016 的个人空间。</p><p id="about-bio" class="body-copy">我在这里整理产品研究、交互原型与 Web 实践，留下从问题、方案到实现的探索过程。</p><a class="ghost-link accent-link" href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer">在 GitHub 发现更多 <span aria-hidden="true">↗</span></a></div></section>
-    <section id="contact" class="contact-section container section-space"><div><p class="eyebrow">THE NEXT CONVERSATION</p><h2>下一个想法，<br>一起聊聊。</h2></div><div class="contact-copy"><p class="body-copy">分享一个灵感，交流一个想法。<br>或是，简单说声你好。</p><div class="contact-actions"><button type="button" class="button primary" id="contact-button">和我联系 <span aria-hidden="true">↗</span></button><a class="ghost-link" href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div></section>
+<body class="welcome-page">
+  <main class="welcome-window" aria-labelledby="welcome-title">
+    <div class="welcome-titlebar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>maxiao@personal-space — welcome</span><span class="welcome-version">01 / 01</span></div>
+    <div class="welcome-body">
+      <p class="terminal-command"><span>❯</span> ./hello-maxiao</p>
+      <div class="boot-lines" aria-label="欢迎信息"><p><span>Opening a space for ideas</span><b>[ OK ]</b></p><p><span>Projects, practice & writing</span><b>[ OK ]</b></p><p class="boot-identity">Identity: 马骁 / MA XIAO</p></div>
+      <div class="welcome-heading"><p>WELCOME TO MY LITTLE WORLD</p><h1 id="welcome-title">MX<span aria-hidden="true">✳</span>OS</h1><p class="welcome-tagline">让好奇有去处，让想法有回声。</p></div>
+      <a href="home.html#about" class="welcome-enter" id="enter-site"><span>点击进入我的主页</span><span aria-hidden="true">↵</span></a>
+      <p class="welcome-hint">也可以按回车键进入 <span aria-hidden="true">_</span></p>
+    </div>
+    <div class="welcome-footer"><span>MA XIAO / PERSONAL PORTFOLIO</span><span><i aria-hidden="true"></i> READY TO EXPLORE</span></div>
   </main>
-  <footer class="footer container"><a class="footer-brand" href="#home" data-site-name>xma28016</a><p>© <span id="year">2026</span> <span data-footer-name>xma28016</span> · 好奇，未完待续。</p><a href="https://github.com/xma28016-gif/xma28016-gif.github.io" target="_blank" rel="noopener noreferrer">网站源码 <span aria-hidden="true">↗</span></a><a href="#home" class="back-top" aria-label="回到顶部">↑</a></footer>
-  <dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialog-content"></div></dialog>
+  <p class="welcome-outside">一点观察，一点创造。欢迎认识我。</p>
 </body>
 </html>

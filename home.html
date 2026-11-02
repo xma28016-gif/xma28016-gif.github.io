@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#e9edf4">
+  <meta name="description" content="马骁的个人主页，记录产品研究、交互原型、Web 项目、实践技能与公众号文章。">
+  <title>马骁 · 项目、技能与写作 | MX OS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="workspace.js" defer></script>
+</head>
+<body class="portfolio-page">
+  <a class="skip-link" href="#content">跳至内容</a>
+  <div class="desktop-window">
+    <header class="system-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><a href="index.html" class="system-brand" aria-label="返回欢迎页">MX<span>✳</span>OS<small>/ PERSONAL SPACE</small></a><div class="system-tools"><span class="system-ready"><i aria-hidden="true"></i> 好奇心在线</span><a href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div></header>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="个人空间导航">
+        <a class="sidebar-profile" href="#about"><span class="sidebar-avatar"><img src="assets/maxiao-portrait.jpg" alt="马骁的个人照片" width="56" height="56"></span><span><strong>马骁</strong><small>MA XIAO / EXPLORER</small></span></a>
+        <p class="sidebar-label">EXPLORE / 探索</p>
+        <nav class="main-nav" aria-label="主导航"><a class="nav-link" href="#about" aria-current="page"><span>01</span>关于我<b aria-hidden="true">↗</b></a><a class="nav-link" href="#works"><span>02</span>个人项目<b aria-hidden="true">↗</b></a><a class="nav-link" href="#skills"><span>03</span>技能标签<b aria-hidden="true">↗</b></a><a class="nav-link" href="#notes"><span>04</span>文章归档<b aria-hidden="true">↗</b></a><a class="nav-link" href="#contact"><span>05</span>联系我<b aria-hidden="true">↗</b></a></nav>
+        <div class="sidebar-bottom"><p><i aria-hidden="true"></i> PERSONAL SPACE / ONLINE</p><span>产品思考 · 交互实践 · 公开写作</span><a href="index.html">返回欢迎页 <b aria-hidden="true">↗</b></a></div>
+      </aside>
+      <main id="content" class="main-content" tabindex="-1">
+        <section id="about" class="panel" aria-labelledby="about-title">
+          <div class="panel-heading"><span>01 / ABOUT ME</span><span>HELLO, WORLD. 👋</span></div>
+          <div class="about-grid"><figure class="portrait-card"><div class="portrait-frame"><img src="assets/maxiao-portrait.jpg" alt="马骁在户外的个人照片" width="3024" height="4032" fetchpriority="high"></div><figcaption><span>MA XIAO</span><span>保持好奇，持续生长。</span></figcaption></figure><div class="about-copy"><p class="availability"><i aria-hidden="true"></i> OPEN TO NEW IDEAS</p><h1 id="about-title" tabindex="-1">你好，<br>我是<span>马骁。</span></h1><p class="role-line">产品研究 / 交互实践 / 写作记录</p><p id="about-greeting" class="about-lead">从真实的问题出发，把想法变成可以体验的作品。</p><p id="about-bio" class="about-detail"></p><div id="profile-tags" class="profile-tags" aria-label="个人标签"></div><div class="about-buttons"><a class="button primary" href="#works">查看我的项目 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#notes">阅读我的文章 <span aria-hidden="true">↗</span></a></div></div></div>
+          <div class="section-label"><div><p>FOCUS AREAS</p><h2>我的探索，正在继续。</h2></div><span>从一个入口，认识更多的我。</span></div>
+          <div class="focus-grid"><a class="focus-card focus-build" href="#works"><span>01 / BUILD</span><h3>产品与作品</h3><p>交互原型、产品拆解与方案策划。</p><b>浏览 <strong data-count="projects">4</strong> 个公开项目 ↗</b></a><a class="focus-card focus-practice" href="#skills"><span>02 / PRACTICE</span><h3>工具与技能</h3><p>把方法放进项目，让实践留下证据。</p><b>探索 <strong data-count="skills">16</strong> 个技能标签 ↗</b></a><a class="focus-card focus-write" href="#notes"><span>03 / WRITE</span><h3>文章与思考</h3><p>公众号「代码不再冷冰冰」与研究报告。</p><b>阅读 <strong data-count="articles">3</strong> 篇文章与报告 ↗</b></a></div>
+        </section>
+        <section id="works" class="panel" aria-labelledby="projects-heading" hidden>
+          <div class="panel-heading"><span>02 / PUBLIC PROJECTS</span><span>REAL WORK, REAL PROGRESS</span></div>
+          <div class="collection-heading"><div><p class="eyebrow">WORK / 个人项目</p><h1 id="projects-heading" tabindex="-1">把想法，<br>做成可体验的作品。</h1><p>产品原型、实测研究与持续维护的网站。每个项目都有完整说明、作品和源码入口。</p></div><div class="collection-number"><strong data-count="projects">4</strong><span>PROJECTS</span></div></div>
+          <div class="catalog-toolbar"><div class="filters" role="group" aria-label="筛选项目"><button class="filter active" type="button" data-project-filter="all" aria-pressed="true">全部项目</button><button class="filter" type="button" data-project-filter="research" aria-pressed="false">产品研究</button><button class="filter" type="button" data-project-filter="web" aria-pressed="false">交互与 Web</button></div><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索项目</span><input id="project-search" type="search" placeholder="搜索项目、技术或关键词" autocomplete="off"></label></div>
+          <div class="catalog-status"><p id="project-count" aria-live="polite"></p><button type="button" id="active-skill" class="clear-skill" hidden></button></div>
+          <div id="project-list" class="project-list"></div><p id="project-empty" class="empty-state" hidden>没有找到匹配项目，试试其他分类或关键词。</p><a class="text-link catalog-source" href="https://github.com/xma28016-gif?tab=repositories" target="_blank" rel="noopener noreferrer">浏览全部公开仓库 <span aria-hidden="true">↗</span></a>
+        </section>
+        <section id="skills" class="panel" aria-labelledby="skills-title" hidden>
+          <div class="panel-heading"><span>03 / SKILLS & PRACTICE</span><span>LEARNING BY BUILDING</span></div><div class="collection-heading"><div><p class="eyebrow">PRACTICE / 技能标签</p><h1 id="skills-title" tabindex="-1">把方法留下，<br>让实践说话。</h1><p>从研究、策划到交互与实现。点击技能标签，可以查看它对应的真实项目。</p></div><div class="collection-number"><strong data-count="skills">16</strong><span>SKILL TAGS</span></div></div><div id="skill-groups" class="skill-groups"></div>
+        </section>
+        <section id="notes" class="panel" aria-labelledby="writing-title" hidden>
+          <div class="panel-heading"><span>04 / WRITING ARCHIVE</span><span>THOUGHTS, KEPT IN WORDS</span></div><div class="collection-heading"><div><p class="eyebrow">WRITING / 文章与报告</p><h1 id="writing-title" tabindex="-1">持续观察，<br>也持续表达。</h1><p>收录公众号原文和完整产品研究报告。点击文章，在原始发布页面继续阅读。</p></div><div class="collection-number"><strong data-count="articles">3</strong><span>ARTICLES</span></div></div><div class="writing-layout"><aside id="publication" class="publication" hidden></aside><div class="articles-column"><div class="article-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索文章</span><input id="article-search" type="search" placeholder="搜索文章、主题或标签" autocomplete="off"></label><label><span class="sr-only">文章分类</span><select id="article-category" aria-label="文章分类"><option value="all">全部分类</option></select></label></div><p id="article-count" class="article-count" aria-live="polite"></p><div id="note-list" class="note-list"></div><p id="article-empty" class="empty-state" hidden>没有找到相关文章，试试其他关键词。</p></div></div>
+        </section>
+        <section id="contact" class="panel" aria-labelledby="contact-title" hidden>
+          <div class="panel-heading"><span>05 / GET IN TOUCH</span><span>LET'S CONNECT</span></div><div class="contact-hero"><p class="eyebrow">HAVE AN IDEA? / 交流一下</p><h1 id="contact-title" tabindex="-1">下一个好想法，<br>从一句你好开始。</h1><p>欢迎交流产品研究、交互体验、AI 探索与内容创作。</p><button type="button" id="contact-button" class="button primary">和我联系 <span aria-hidden="true">↗</span></button></div><div class="contact-links"><a href="https://github.com/xma28016-gif" target="_blank" rel="noopener noreferrer"><small>01 / GITHUB</small><strong>@xma28016-gif</strong><span aria-hidden="true">↗</span></a><a href="https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ" target="_blank" rel="noopener noreferrer"><small>02 / WECHAT</small><strong>代码不再冷冰冰</strong><span aria-hidden="true">↗</span></a></div>
+        </section>
+        <noscript><p class="noscript-note">此界面使用 JavaScript 切换分区。你也可以直接访问 <a href="https://github.com/xma28016-gif">我的 GitHub</a> 或 <a href="https://mp.weixin.qq.com/s/jkrkeoMxSKqe4Bz1p6mLAQ">公众号文章</a>。</p></noscript>
+      </main>
+    </div>
+    <footer class="status-bar"><span><i aria-hidden="true"></i><b id="current-panel-label">关于我</b><span class="status-path">/ 马骁的个人空间</span></span><span id="workspace-counts">4 PROJECTS · 16 SKILLS · 3 ARTICLES</span><span class="copyright">© <span id="year">2026</span> <span data-footer-name>马骁</span></span></footer>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialog-content"></div></dialog>
+</body>
+</html>
