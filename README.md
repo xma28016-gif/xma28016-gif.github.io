@@ -3,6 +3,7 @@
 产品研究、交互原型、Web 实践和文章归档。使用原生 HTML、CSS、JavaScript，无需构建。
 
 - 网站：https://xma28016-gif.github.io/
+- [查看精选项目](https://xma28016-gif.github.io/home.html#works)
 - 源码：https://github.com/xma28016-gif/xma28016-gif.github.io
 
 ## 内容与功能
