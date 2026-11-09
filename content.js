@@ -3,10 +3,10 @@ window.siteContent = {
   name: '马骁',
   github: 'https://github.com/xma28016-gif',
   greeting: '从真实的问题出发，把想法变成可以体验的作品。',
-  bio: '我在这里整理产品研究、交互原型与 Web 实践。从即梦 AI 的任务体验、轻颜相机的迭代方案，到酒店全景交互，留下从问题、方案到实现的探索过程。',
+  bio: '我在这里整理产品研究、交互原型与 Web 实践。从薪动的桌面看板、轻颜相机的迭代方案，到酒店全景交互，留下从问题、方案到实现的探索过程。',
   email: '',
   profileTags: ['产品研究', '交互原型', 'AI 探索', '写作与记录'],
-  reviewedAt: '2026-11-02',
+  reviewedAt: '2026-11-09',
   works: [
     {
       id: 'ctrip-hotel-subscription', title: '携程酒店订阅体验', category: 'web', label: '交互原型', status: '交互演示',
@@ -21,15 +21,15 @@ window.siteContent = {
       ]
     },
     {
-      id: 'jimeng-product-teardown', title: '即梦 AI 产品拆解', category: 'research', label: '产品研究', status: '实测报告',
-      repo: 'https://github.com/xma28016-gif/jimeng-product-teardown',
-      url: 'https://xma28016-gif.github.io/jimeng-product-teardown/',
-      description: '围绕中文海报生成与受约束改图，拆解任务流程、模型入口、费用口径与产品编排，并把判断关联到取证材料。',
-      tags: ['AI 产品评测', '产品拆解', '证据核验'], updated: '2026-10-20',
+      id: 'heartbeat', title: '薪动 × 涨声', category: 'web', label: '桌面产品', status: 'v0.2.1 预览版',
+      repo: 'https://github.com/xma28016-gif/heartbeat',
+      url: 'https://xma28016-gif.github.io/heartbeat/demo/',
+      description: '把工作时间换算成看得见的收入，用两个独立小窗估算今日薪资、记录小憩与手动管理资产。提供浏览器体验与 Mac 桌面预览版。',
+      tags: ['Swift', 'macOS', '收入可视化', '本地存储'], updated: '2026-11-04',
       sections: [
-        { title: '研究任务', text: '以中文茶饮海报生成和指定原图改背景为任务，记录从参数设置、多稿筛选到编辑结果的完整可见路径。' },
-        { title: '分析内容', text: '报告覆盖产品定位、用户场景、评测维度、模型与费用、技术职责分工和架构推导，并分别标记已确认信息、推断及待验证项。' },
-        { title: '完整交付', text: '在线报告提供 10 张取证截图、证据索引与二次核验清单；研究日期为 2026 年 10 月 19 日。' }
+        { title: '薪动：让工作时间可见', text: '按月薪、计薪日和上下班安排估算今日收入与秒薪；支持喝水、伸展等小憩计时，也能把一杯咖啡的价格换算成劳动时间。网页版使用可拖动的演示时钟。' },
+        { title: '涨声：安静记录资产', text: '手动录入股票、ETF、基金与实物黄金，按数量、成本和参考价计算市值及简化浮盈亏，查看类型分布并一键隐藏金额。初始数据为示例，尚未接入实时行情。' },
+        { title: '浏览器与桌面体验', text: '网页版无需安装或登录，数据保存在当前站点本地。Mac 版支持独立窗口拖动、缩放、置顶和设置同步；v0.2.1 为 Apple 芯片预览版，尚未完成 Developer ID 签名与 Apple 公证。可从源码仓库的 Releases 下载。' }
       ]
     },
     {
@@ -60,8 +60,8 @@ window.siteContent = {
     {
       title: '产品研究与策划', description: '从场景与材料出发，把问题整理成可讨论、可验证的方案。',
       items: [
-        { name: '产品拆解', projects: ['jimeng-product-teardown'] },
-        { name: 'AI 产品评测', projects: ['jimeng-product-teardown'] },
+        { name: '产品拆解', projects: [], url: 'https://xma28016-gif.github.io/jimeng-product-teardown/' },
+        { name: 'AI 产品评测', projects: [], url: 'https://xma28016-gif.github.io/jimeng-product-teardown/' },
         { name: '需求分析', projects: ['qingyan-camera-proposal'] },
         { name: '用户访谈分析', projects: ['qingyan-camera-proposal'] },
         { name: '版本规划', projects: ['qingyan-camera-proposal'] },
@@ -71,7 +71,7 @@ window.siteContent = {
     {
       title: '交互与体验', description: '把方案放进可操作的页面，关注浏览、反馈与不同设备上的体验。',
       items: [
-        { name: '交互原型', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: '交互原型', projects: ['ctrip-hotel-subscription', 'heartbeat', 'xma28016-gif.github.io'] },
         { name: '全景交互', projects: ['ctrip-hotel-subscription'] },
         { name: '视频体验', projects: ['ctrip-hotel-subscription'] },
         { name: '响应式布局', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
@@ -81,11 +81,11 @@ window.siteContent = {
     {
       title: '技术与工具', description: '在项目中使用的技术栈。点击标签，可以查看对应实践。',
       items: [
-        { name: 'HTML', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
-        { name: 'CSS', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
-        { name: 'JavaScript', projects: ['ctrip-hotel-subscription', 'xma28016-gif.github.io'] },
+        { name: 'HTML', projects: ['ctrip-hotel-subscription', 'heartbeat', 'xma28016-gif.github.io'] },
+        { name: 'CSS', projects: ['ctrip-hotel-subscription', 'heartbeat', 'xma28016-gif.github.io'] },
+        { name: 'JavaScript', projects: ['ctrip-hotel-subscription', 'heartbeat', 'xma28016-gif.github.io'] },
         { name: 'Canvas', projects: ['xma28016-gif.github.io'] },
-        { name: 'GitHub Pages', projects: ['ctrip-hotel-subscription', 'jimeng-product-teardown', 'qingyan-camera-proposal', 'xma28016-gif.github.io'] }
+        { name: 'GitHub Pages', projects: ['ctrip-hotel-subscription', 'heartbeat', 'qingyan-camera-proposal', 'xma28016-gif.github.io'] }
       ]
     }
   ],

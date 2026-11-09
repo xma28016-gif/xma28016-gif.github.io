@@ -62,7 +62,7 @@ activeSkillLabel.addEventListener('click', () => {
   renderProjects();
 });
 
-document.querySelector('#skill-groups').innerHTML = content.skills.map((group, i) => '<section class="skill-group" aria-labelledby="skill-group-' + i + '"><h3 id="skill-group-' + i + '">' + escapeHTML(group.title) + '</h3><p>' + escapeHTML(group.description) + '</p><div class="skill-tags">' + group.items.map(skill => '<button type="button" class="skill-tag" data-skill="' + escapeHTML(skill.name) + '" aria-pressed="false" aria-label="查看' + escapeHTML(skill.name) + '对应项目">' + escapeHTML(skill.name) + '<span aria-hidden="true">↗</span></button>').join('') + '</div></section>').join('');
+document.querySelector('#skill-groups').innerHTML = content.skills.map((group, i) => '<section class="skill-group" aria-labelledby="skill-group-' + i + '"><h3 id="skill-group-' + i + '">' + escapeHTML(group.title) + '</h3><p>' + escapeHTML(group.description) + '</p><div class="skill-tags">' + group.items.map(skill => skill.url ? externalLink(skill.url, skill.name, 'skill-tag') : '<button type="button" class="skill-tag" data-skill="' + escapeHTML(skill.name) + '" aria-pressed="false" aria-label="查看' + escapeHTML(skill.name) + '对应项目">' + escapeHTML(skill.name) + '<span aria-hidden="true">↗</span></button>').join('') + '</div></section>').join('');
 document.querySelector('#skill-groups').addEventListener('click', event => {
   const button = event.target.closest('[data-skill]');
   if (!button) return;
