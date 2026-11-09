@@ -37,7 +37,9 @@ python3 -m http.server 5173
 - `publication`：公众号名称、说明和已确认的文章入口。
 - `profileTags`、`greeting`、`bio`：个人标签与介绍。
 
-新增公开项目时，同时维护相关技能中的项目 ID。新增公众号文章时，将标题与原文链接加入 `notes`，可同时补充已确认的日期和摘要。
+新增或替换精选项目时，同时维护相关技能中的项目 ID。项目移出精选列表后，如仍保留研究报告，可在技能项的 `url` 中填写报告地址，点击技能即可直接阅读，避免筛选出空列表。
+
+新增公众号文章时，将标题与原文链接加入 `notes`，可同时补充已确认的日期和摘要。
 
 欢迎页在 `index.html`，主页结构在 `home.html`，样式在 `styles.css`，目录筛选与弹窗在 `app.js`，分区路由在 `workspace.js`，欢迎页键盘入口在 `welcome.js`，联系页卡通互动在 `contact-mascot.js`。个人照片为 `assets/maxiao-portrait.jpg`，来源于站点主人提供的原照。卡通形象为 `assets/maxiao-mascot.png`，由内置图像生成工具参考原照生成；提示词保存在 `assets/maxiao-mascot.prompt.txt`。`particles.js` 保留早期 Canvas 实验，当前页面不加载。Inter 字体本地托管，许可文件在 `assets/fonts/LICENSE.txt`。
 
